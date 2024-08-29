@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<header class="bg-dark py-3">
+    <div class="container px-1 px-lg-2 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-5 fw-bold" style="font-size: 2.5rem; font-family: Arial, sans-serif;">Events and Classes at Beige Art Studio</h1>
+        </div>
+    </div>
+</header>
+<br/><br/>
+
+<div class="container">
+    <div class="row justify-content-center"> <!-- Center aligns content -->
+        <div class="col-lg-10"> <!-- Adjusted column width for medium to large screens -->
+
+            <!-- Exhibitions Section -->
+            <h2 class="mb-4" style="font-size: 1.75rem;">Exhibitions</h2>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{% static 'exhibition.jpeg' %}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9"> <!-- Adjusted column width for content area -->
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Masters: Contemporary Art in the 21st Century</h5>
+                            <p class="card-text">"Modern Masters" is a dynamic exhibition showcasing the innovative works of contemporary artists from around the globe. The exhibition features a diverse range of media, including painting, sculpture, photography, and digital art, highlighting the unique perspectives and techniques that define modern art today.</p>
+                            <p class="card-text"><small class="text-body-secondary">
+                                <strong>Date and Time:</strong><br>
+                                July 15, 2024 - August 31, 2024<br>
+                                Monday - Friday: 10:00 AM - 6:00 PM<br>
+                                Saturday - Sunday: 11:00 AM - 7:00 PM<br><br>
+                                <strong>Location:</strong><br>
+                                Beige Art Studio, 398 First Floor, 10th Cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102
+                            </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Art Classes Section -->
+            <h2 class="mb-4" style="font-size: 1.75rem;">Art Classes</h2>
+            <div class="card-group">
+                <div class="card">
+                  <img src="{% static 'classes1.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Children (8-11 years)</h5>
+                    <p class="card-text">Discover the joy of creativity in our art classes for ages 8-11! From mastering line drawing and exploring color theory to delving into diverse art styles like Pop Art and Folk Art, our classes inspire young artists to unleash their imagination and develop essential skills in a supportive environment</p>
+                    <a class="btn btn-outline-dark" href="{% url 'classes_children' %}">Learn More</a>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="{% static 'classes2.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Teens (12-15 years)</h5>
+                    <p class="card-text">Join our art classes for ages 12-15! Explore perspective drawing, charcoal sketches, watercolor techniques, and more. Dive into surrealism, portraiture, and Rajasthan miniatures, all while honing your skills on A3 canvas</p>
+                    <a class="btn btn-outline-dark" href="{% url 'classes_teens' %}">Learn More</a>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="{% static 'classes3.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Adults</h5>
+                    <p class="card-text">Explore advanced art techniques in our adult classes! Master watercolor landscapes, realism, and diverse art styles. Enhance your sketching skills with pencil, pen shading, and charcoal for portraits and still lifes. Delve into acrylic painting with a focus on art styles, medium use, and techniques for still life and scenery.</p>
+                    <a class="btn btn-outline-dark" href="{% url 'classes_adults' %}">Learn More</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+{% endblock %}

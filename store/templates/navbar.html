@@ -1,0 +1,61 @@
+<!-- navbar.html -->
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f9e7bc;">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'logo.jpg' %}" alt="Beige Art Studio Logo" style="height: 40px; margin-right: 10px;">
+            Beige Art Studio
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownCollections" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Collections</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCollections">
+                        <li><a class="dropdown-item" href="{% url 'category_summary' %}">All Products</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'Still-Life' %}">Still Life</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'Colors-Of-Life' %}">Colors Of Life</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
+                            <li><a class="dropdown-item" href="{% url 'update_user' %}">User Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'update_info' %}">User Info</a></li>
+                            <li><a class="dropdown-item" href="{% url 'order_list' %}">My Orders</a></li>
+                            {% if user.is_superuser %}
+                                <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="{% url 'shipped_dash' %}">Shipped Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url 'not_shipped_dash' %}">Unshipped Orders</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+            <form class="d-flex flex-row align-items-center" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="searched">
+                <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark ms-3"><i class="bi bi-cart-fill me-1"></i>
+                Cart
+                <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+            </a>
+        </div>
+    </div>
+</nav>

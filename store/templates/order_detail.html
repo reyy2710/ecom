@@ -1,0 +1,48 @@
+<!-- order_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mt-5">
+                <div class="card-header">
+                    Order {{ order.id }} - ₹{{ order.amount_paid }}
+                </div>
+                <div class="card-body">
+                    <p><strong>Email:</strong> {{ order.email }}</p>
+                    <p><strong>{% if order.date_shipped %}Date Shipped{% else %}Date Ordered{% endif %}:</strong> {{ order.date_shipped|default_if_none:order.date_ordered }}</p>
+                    <p><strong>Name:</strong> {{ order.full_name }}</p>
+                    <p><strong>Shipping Address:</strong><br>{{ order.shipping_address }}</p>
+                    
+                    <hr>
+                    
+                    <h5>Order Items:</h5>
+                    <ul class="list-group">
+                        {% for item in items %}
+                        <li class="list-group-item">
+                            {{ item.product }} - Quantity: {{ item.quantity }} - ₹{{ item.price }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <hr>
+                    
+                    {% if not order.shipped %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="shipping_status" value="true">
+                        <button type="Submit" class="btn btn-success">Mark As Shipped</button>
+                    </form>
+                    {% else %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="shipping_status" value="false">
+                        <button type="Submit" class="btn btn-danger">Mark As Not Shipped</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

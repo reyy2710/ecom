@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<header class="bg-dark py-3">
+  <div class="container px-1 px-lg-2 my-5">
+      <div class="text-center text-white">
+          <h1 class="display-5 fw-bold" style="font-size: 2.5rem; font-family: Arial, sans-serif;">About the Artist</h1>
+      </div>
+  </div>
+</header>
+<section class="about-us">
+  <div class="about">
+    <img src="{% static 'artist.jpg' %}" class="pic" alt="Profile Picture"/>
+    <div class="text-container">
+      <div class="text">
+        <h2>Mridul Garg</h2>
+        <h5>Founder and <span>Artist</span></h5>
+        <div class="text-box">
+          <p>Mridul Garg is an accomplished and trained artist hailing from India, whose works have garnered praise and recognition in numerous national and international group exhibitions. With a portfolio spanning various mediums including oil, acrylic, and watercolors, Mridul specializes in both large-scale and intimate paintings, collaborating closely with clients and interior designers to craft bespoke pieces. Their artistic journey is marked by a profound connection to nature, evident in their evocative landscapes, portraits, and theme-based compositions. Rooted in a deep appreciation for the beauty and complexity of the world, Mridul infuses each artwork with heartfelt messages and an aura of positive energy, reflecting the rich tapestry of human emotions and experiences. Drawing inspiration from travels across diverse landscapes and cultures, Mridul's paintings resonate with a sense of universality, capturing the essence of shared human experiences while celebrating individuality. Their commitment to continuous growth and innovation is evident in their exploration of mixed media techniques, layering paints to create visual depth and intricate interplays of light, shadow, and color.</p>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .header-content h1 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #fff8e7;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  .pic {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .text-container {
+    width: 100%;
+    background: none;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .text {
+    width: 100%;
+    max-width: 750px;
+  }
+
+  .text h2 {
+    color: #333;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .text h5 {
+    color: #333;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  span {
+    color: #4070f4;
+  }
+
+  .text p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+
+  .data {
+    margin-top: 30px;
+  }
+
+  .hire {
+    font-size: 18px;
+    background: #4070f4;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    transition: 0.5s;
+  }
+
+  .hire:hover {
+    background: #000;
+  }
+
+  @media (min-width: 768px) {
+    .about-us {
+      flex-direction: row;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .about {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .pic {
+      margin-right: 20px;
+      margin-left: 0;
+      width: 300px;
+    }
+
+    .text-container {
+      text-align: left;
+    }
+  }
+</style>
+{% endblock %}

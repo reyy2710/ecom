@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-3">
+    <div class="container px-1 px-lg-2 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-5 fw-bold" style="font-size: 2.5rem;">Beige Art Studio</h1>
+        </div>
+    </div>
+</header>
+
+<!-- Carousel-->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+            <img src="{% static 'image1.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block caption-custom">
+                <h3>Discover our collection of paintings and prints</h3>
+                <a class="btn btn-dark text-light btn-outline-light" href="{% url 'category_summary' %}">Shop Now</a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static 'image2.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block caption-custom">
+                <h3>Art Classes at the Studio</h3>
+                <a class="btn btn-dark text-light btn-outline-light" href="{% url 'events' %}">Explore</a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static 'image3.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block caption-custom">
+                <h3>New Collection</h3>
+                <a class="btn btn-dark text-light btn-outline-light" href="{% url 'category_summary' %}">Explore</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in products %}
+            <div class="col mb-5">
+                <div class="card h-100 position-relative">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ product.name }}</h5>
+                            <!-- Product description-->
+                            <p>{{ product.description }}</p>
+                            <!-- Product price-->
+                            ₹{{ product.price }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'product' product.id %}" class="stretched-link"></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

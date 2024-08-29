@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    {% for order in orders %}
+    <h2 class="mb-4">Order Details - Order ID: {{ order.id }}</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            Order Summary
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <strong>Email:</strong> {{ order.user.email }}<br>
+                    <strong>Full Name:</strong> {{ order.user.get_full_name }}<br>
+                    <strong>Shipping Address:</strong><br>
+                    <pre>{{ order.shipping_address }}</pre>
+                </div>
+                <div class="col-md-6">
+                    <strong>Date Ordered:</strong> {{ order.date_ordered }}<br>
+                    <strong>Total Amount:</strong> ${{ order.amount_paid }}<br>
+                    {% if order.date_shipped %}
+                        <strong>Date Shipped:</strong> {{ order.date_shipped }}<br>
+                    {% endif %}
+                    {% if not order.shipped %}
+                    <strong>Shipping Status:</strong><red>Order Not Shipped Yet</red> <br> 
+                    {% endif %}
+                </div>
+            </div>
+            
+            <hr>
+            
+            <h4>Ordered Items</h4>
+            {% for item in order.order_items.all %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="{{ item.product.image.url }}" class="img-fluid" alt="{{ item.product.name }}">
+                            </div>
+                            <div class="col-md-10">
+                                <h5 class="card-title">{{ item.product.name }}</h5>
+                                <p class="card-text">
+                                    <strong>Quantity:</strong> {{ item.quantity }}<br>
+                                    <strong>Price per unit:</strong> ${{ item.price }}<br>
+                                    <strong>Subtotal:</strong> ₹{{ item.subtotal }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

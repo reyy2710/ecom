@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<header class="bg-dark py-3">
+    <div class="container px-1 px-lg-2 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-5 fw-bold" style="font-size: 2.5rem; font-family: Arial, sans-serif;">Art Classes for Teens</h1>
+        </div>
+    </div>
+</header>
+<br/><br/>
+
+<div class="container">
+    <div class="row justify-content-center"> <!-- Center aligns content -->
+        <div class="col-lg-10"> <!-- Adjusted column width for medium to large screens -->
+
+            <!-- Information Section -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{% static 'classes2.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9"> <!-- Adjusted column width for content area -->
+                        <div class="card-body">
+                            <h5 class="card-title">Ages 12 to 15 years</h5>
+                            <p class="card-text">Join our art classes for ages 12-15! Explore perspective drawing, charcoal sketches, watercolor techniques, and more. Dive into surrealism, portraiture, and Rajasthan miniatures, all while honing your skills on A3 canvas</p>
+                            <p class="card-text">
+                                [  ] One point perspective <br>
+                                [  ] Two point <br>
+                                [  ] Three pencil sketches <br>
+                                [  ] Charcoal <br>
+                                [  ] Water color techniques <br>
+                                [  ] Human body proportion <br>
+                                [  ] Portraits <br>
+                                [  ] Memory drawings <br>
+                                [  ] Rajasthan miniatures art <br>
+                                [  ] Surrealism <br>
+                                [  ] Concept drawings <br>
+                                [  ] Illusion art with Typography <br>
+                                [  ] A3 size canvas
+                            </p>
+                            
+                            <p class="card-text"><small class="text-body-secondary">
+                                <strong>Date and Time:</strong><br>
+                                July 15, 2024 - August 31, 2024<br>
+                                Monday - Friday: 10:00 AM - 6:00 PM<br>
+                                Saturday - Sunday: 11:00 AM - 7:00 PM<br><br>
+                                <strong>Location:</strong>
+                                <p class="text-dark">Location: <a href="https://www.google.com/maps/place/Beige+Art+Studio/@12.9181455,77.6521382,15z/data=!4m6!3m5!1s0x3bae1500067d0053:0xc842689d38c7bd40!8m2!3d12.9181455!4d77.6521382!16s%2Fg%2F11vx4vl65k?entry=ttu" target="_blank">398 First Floor, 10th Cross, 27th Main Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102</a></p>
+                                <strong>To Enroll Contact Us At:</strong><br>
+                                <p class="text-dark">Phone: <a href="tel:+919910926054">+91 9910926054</a></p>
+                                <p class="text-dark">Email: <a href="mailto:mridulmithal@yahoo.co.in">mridulmithal@yahoo.co.in</a></p>
+                                <strong>Follow us for updates and sneak peeks:</strong><br>
+                                <p class="text-dark">Instagram: <a href="https://www.instagram.com/beige.artstudio/" target="_blank">@beige.artstudio</a></p>
+                                <a href="{% url 'events' %}" class="btn btn-secondary me-2">Back to Events</a>
+                            </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+{% endblock %}
